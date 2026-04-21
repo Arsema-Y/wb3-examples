@@ -3,23 +3,27 @@ package com.pluralsight;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
+
 public class FileReaderExample {
 
         public static void main(String[] args) throws IOException {
-            FileReader fileReader = new FileReader("cream.txt");
-            BufferedReader bufferedReader = new BufferedReader(fileReader);
+            try {
+                FileReader fileReader = new FileReader("cream.txt");
+                BufferedReader bufferedReader = new BufferedReader(fileReader);
 
-            String Line = bufferedReader.readLine();
+                String Line = bufferedReader.readLine();
 
-            while (Line != null) {
-                System.out.println(Line);
-                Line = bufferedReader.readLine();
+                while (Line != null) {
+                    System.out.println(Line);
+                    Line = bufferedReader.readLine();
+                }
+
+                bufferedReader.close();
+
+            } catch (IOException e) {
+                System.out.println("The file could not be read. Please make sure the file is available and not locked and then try again.");
+                e.printStackTrace();
             }
-
-            bufferedReader.close();
 
         }
 
